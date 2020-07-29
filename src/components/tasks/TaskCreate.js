@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createTask } from "../../redux/actions";
+import { createTask, fetchUsers } from "../../redux/actions";
 import TaskForm from "./TaskForm";
 
 class TaskCreate extends React.Component {
   onSubmit = (formValues) => {
     this.props.createTask(formValues);
+    this.props.fetchUsers();
   };
 
   render() {
@@ -25,5 +26,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  createTask,
+  createTask, fetchUsers
 })(TaskCreate);

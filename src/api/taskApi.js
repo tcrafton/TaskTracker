@@ -24,3 +24,7 @@ export const addTask = (task) => {
 export const updateTask = (task) => {
   return baseURL.post("/editTask", { ...task });
 };
+
+export const removeTask = (id) => {
+  return baseURL.delete(`/deleteTask/${id}`);
+};

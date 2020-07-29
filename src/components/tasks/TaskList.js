@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchTasks, fetchUsers } from "../../redux/actions";
+import { fetchTasks, fetchUsers, deleteTask } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "../common/LoadingIndicator";
@@ -51,7 +51,12 @@ class TaskList extends React.Component {
                   </Link>
                 </td>
                 <td>
-                  <button className="btn btn-outline-danger">Delete</button>
+                  <Link
+                    to={`/tasks/delete/${task.ID}`}
+                    className="btn btn-outline-danger"
+                  >
+                    Delete
+                  </Link>
                 </td>
               </tr>
             );
@@ -89,4 +94,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchTasks, fetchUsers })(TaskList);
+export default connect(mapStateToProps, { fetchTasks, fetchUsers, deleteTask })(
+  TaskList
+);

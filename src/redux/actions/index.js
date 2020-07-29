@@ -5,6 +5,7 @@ import {
   getTasks,
   getTaskById,
   updateTask,
+  removeTask,
 } from "../../api/taskApi";
 import { sleeper } from "../../api/apiUtils";
 import {
@@ -30,8 +31,16 @@ export const editTask = (formValues) => async (dispatch) => {
   history.push("/tasks");
 };
 
+export const deleteTask = (id) => async (dispatch) => {
+  const response = await removeTask(id);
+
+  dispatch({ type: DELETE_TASK, payload: response.data });
+  history.push("/tasks");
+};
+
 export const fetchTasks = () => async (dispatch) => {
-  const response = await getTasks().then(sleeper(1000));
+  //const response = await getTasks().then(sleeper(1000));
+  const response = await getTasks();
 
   dispatch({ type: FETCH_TASKS, payload: response.data });
 };

@@ -1,10 +1,15 @@
 import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
-import { editTask } from "../../redux/actions";
+import { editTask, fetchTask, fetchUsers } from "../../redux/actions";
 import TaskForm from "./TaskForm";
 
 class TaskEdit extends React.Component {
+  componentDidMount() {
+    this.props.fetchTask(this.props.match.params.id);
+    this.props.fetchUsers();
+  }
+
   onSubmit = (formValues) => {
     this.props.editTask(formValues);
   };
@@ -41,4 +46,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { editTask })(TaskEdit);
+export default connect(mapStateToProps, { editTask, fetchTask, fetchUsers })(
+  TaskEdit
+);

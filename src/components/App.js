@@ -5,6 +5,7 @@ import InfoPage from "./info/InfoPage";
 import TaskList from "./tasks/TaskList";
 import TaskEdit from "./tasks/TaskEdit";
 import TaskCreate from "./tasks/TaskCreate";
+import TaskDelete from "./tasks/TaskDelete";
 import Header from "./common/Header";
 import history from "../history";
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/info" component={InfoPage} />
           <Route path="/tasks/new" exact component={TaskCreate} />
           <Route path="/tasks/edit/:id" exact component={TaskEdit} />
+          <Route path="/tasks/delete/:id" exact component={TaskDelete} />
           <Route path="/tasks" component={TaskList} />
         </Switch>
       </Router>
